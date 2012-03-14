@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>test</title>
+	<style>
+		body{background:black;color:white}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<!--<script src="jquery-1.4.2.js"></script>-->
+	<script src="lei.js"></script>
+</head>
+
+<body>
+
+<div id="test">
+	<canvas id="test1">No canvas support</canvas>
+	<canvas id="test2">No canvas support</canvas>
+	<canvas id="test3">No canvas support</canvas>
+	<canvas id="test4">No canvas support</canvas>
+	<canvas id="test5">No canvas support</canvas>
+	<canvas id="test6">No canvas support</canvas>
+</div>
+<script>
+var cg, cg2, led, led2, wg, hw;
+$(function(){
+	cg = $.lei.CGauge('test1',{
+				dialRadius : 100,
+				smallTick : 3,
+				largeTick : 15,
+				minVal : 0,
+				maxVal : 360,
+				ltlen : 18,
+				stlen : 15,
+				backgroundColor : "#333",
+				needleCenterRadius : 10,
+				needleBottom : 50,
+				labelOffset : 15,
+				labelFontSize : 12,
+				minAngle : 180,
+				maxAngle : 540,
+				markDirection : true,
+				needleColor : "rgba(255,255,0,60)",
+				dialColor : "#7cccff",
+				cogEnable : true,
+				cogColor : "rgba(255,0,0,75)"
+				});
+	cg2 = $.lei.CGauge('test2',{
+				dialRadius : 100,
+				smallTick : 3,
+				largeTick : 15,
+				minVal : 0,
+				maxVal : 360,
+				ltlen : 18,
+				stlen : 15,
+				needleCenterRadius : 10,
+				needleBottom : 50,
+				labelOffset : 15,
+				labelFontSize : 12,
+				minAngle : 180,
+				maxAngle : 540,
+				markDirection : false,
+				needleColor : "rgba(255,255,0,60)",
+				dialColor : "#7cccff",
+				cogEnable : false,
+				cogColor : "rgba(255,0,0,75)"
+				});
+	led = $.lei.LED('test3',{
+				initialValue : 0,
+				count : 3,
+				decimal : 1,
+				scale : 0.2
+				});
+	led2 = $.lei.LED('test4',{
+				initialValue : 0,
+				count : 3,
+				decimal : 2,
+				scale : 0.4
+				});
+	wg = $.lei.WindGauge('test5',{
+				dialRadius : 120,
+				largeTick : 30,
+				smallTick : 10,
+				lStartVal : -20,
+				rStartVal : 20,
+				ltlen : 12,
+				stlen : 9,
+				backgroundColor : "transparent",
+				needleCenterRadius : 7,
+				needleColor : "#fa0000",
+				labelOffset : -25,
+				labelFontSize : 12,
+				lRangeColor : "#ab3333",
+				rRangeColor : "#49952c",
+				rangeLen : 7,
+				enableLED : true,
+				LEDcount : 3,
+				LEDdecimal : 1,
+				LEDscale : 0.23,
+				rotateNearest : true
+				});
+	hw = $.lei.Highway('test6',{
+				width: 278,
+				height: 200,
+				backgroundColor: "black",
+				sideColor: "#8c2121",
+				sideWidthPercent: 0.15,
+				bottomHeight: 30,
+				boatColor: "#f00000"
+				});
+	setTimeout(function(){
+				cg.setCogValue(30).setValue(105)
+				}, 1000);
+	setTimeout(function(){
+				cg.setCogValue(0).setValue(45)
+				}, 1200);
+	setTimeout(function(){
+				cg2.setCogValue(180).setValue(45)
+				}, 1000);
+	setTimeout(function(){
+				led.setValue(88)
+				}, 2000);
+	setTimeout(function(){
+				led2.setValue(1.11)
+				}, 2500);
+	setTimeout(function(){
+				wg.setSpeed(27.1);
+      			wg.setValue(112);
+				}, 3000);
+	setTimeout(function(){
+      			hw.setValue(0.07);
+				}, 3500);
+});
+</script>
+</body>
+</html>
